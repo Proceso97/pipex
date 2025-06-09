@@ -1,0 +1,26 @@
+# Compiled files
+*.o
+*.a
+*.out
+pipex
+
+# System files
+.DS_Store
+*~
+*.swp
+*.swo
+
+# Debug files
+*.dSYM/
+*.gdb_history
+
+# IDE files
+.vscode/
+.idea/
+
+# Test files
+test_*
+temp_*
+
+# instrucciones
+instrucciones/
