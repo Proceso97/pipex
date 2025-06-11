@@ -6,7 +6,7 @@
 /*   By: jzarza-g <jzarza-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 18:29:57 by jzarza-g          #+#    #+#             */
-/*   Updated: 2025/06/09 18:51:50 by jzarza-g         ###   ########.fr       */
+/*   Updated: 2025/06/11 20:59:46 by jzarza-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_pipex
 
 /* Funciones principales */
 void	error_exit(char *msg);
+void	cleanup_and_exit(char **cmd_args, char *cmd_path, char *msg);
 void	child_process(t_pipex *data, char *cmd);
 void	parent_process(t_pipex *data, char *cmd);
 char	*find_path(char *cmd, char **envp);

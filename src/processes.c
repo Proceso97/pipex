@@ -6,7 +6,7 @@
 /*   By: jzarza-g <jzarza-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 19:15:00 by jzarza-g          #+#    #+#             */
-/*   Updated: 2025/06/09 18:55:41 by jzarza-g         ###   ########.fr       */
+/*   Updated: 2025/06/11 21:00:07 by jzarza-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	child_process(t_pipex *data, char *cmd)
 		error_exit("Error splitting command");
 	cmd_path = find_path(cmd_args[0], data->envp);
 	if (!cmd_path)
-		error_exit("Command not found");
+		cleanup_and_exit(cmd_args, NULL, "Command not found");
 	if (execve(cmd_path, cmd_args, data->envp) == -1)
-		error_exit("Error executing command");
+		cleanup_and_exit(cmd_args, cmd_path, "Error executing command");
 }
 
 void	parent_process(t_pipex *data, char *cmd)
@@ -49,7 +49,7 @@ void	parent_process(t_pipex *data, char *cmd)
 		error_exit("Error splitting command");
 	cmd_path = find_path(cmd_args[0], data->envp);
 	if (!cmd_path)
-		error_exit("Command not found");
+		cleanup_and_exit(cmd_args, NULL, "Command not found");
 	if (execve(cmd_path, cmd_args, data->envp) == -1)
-		error_exit("Error executing command");
+		cleanup_and_exit(cmd_args, cmd_path, "Error executing command");
 }
