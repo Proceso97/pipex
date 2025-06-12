@@ -6,7 +6,7 @@
 /*   By: jzarza-g <jzarza-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 19:20:00 by jzarza-g          #+#    #+#             */
-/*   Updated: 2025/06/11 21:11:14 by jzarza-g         ###   ########.fr       */
+/*   Updated: 2025/06/12 16:01:56 by jzarza-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ static char	*get_env_path(char **envp)
 	int	i;
 
 	i = 0;
-	while (envp[i] && ft_strnstr(envp[i], "PATH", 4) == 0)
+	while (envp[i])
+	{
+		if (ft_strnstr(envp[i], "PATH=", 5) != NULL)
+			return (envp[i] + 5);
 		i++;
-	if (!envp[i])
-		return (NULL);
-	return (envp[i] + 5);
+	}
+	return (NULL);
 }
 
 static char	*build_command_path(char *dir, char *cmd)
